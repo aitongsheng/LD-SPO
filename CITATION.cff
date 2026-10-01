@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the LD-SPO manuscript."
+title: "LD-SPO: LLM-Distilled Strategy-Level Policy Optimization for Adaptive Financial Trading"
+type: software
+authors:
+  - name: "LD-SPO Authors"
+version: 0.1.0
+date-released: 2026-09-30
+license: MIT
+repository-code: "https://github.com/OWNER/LD-SPO"
+abstract: "Research implementation of a decoupled multimodal teacher-student framework for strategy-level financial policy optimization."

@@ -1,0 +1,15 @@
+COMMISSION_RATE = 0.001
+INITIAL_BALANCE = 1000000
+WINDOW_SIZE = 30
+LOOKBACK_WINDOW = 60
+NUM_EXPERTS = 4
+STRATEGY_ACTIONS = {0: {'name': 'Weave', 'legacy_name': 'MACross', 'group': 'trend_following'}, 1: {'name': 'Inertia', 'legacy_name': 'Momentum', 'group': 'trend_following'}, 2: {'name': 'Breach', 'legacy_name': 'Turtle', 'group': 'trend_following'}, 3: {'name': 'Flux', 'legacy_name': 'Volume', 'group': 'trend_following'}, 4: {'name': 'Envelope', 'legacy_name': 'ATR', 'group': 'trend_following'}, 5: {'name': 'Reversion', 'legacy_name': 'Boll', 'group': 'mean_reversion'}, 6: {'name': 'Correction', 'legacy_name': 'RSI', 'group': 'mean_reversion'}, 7: {'name': 'Oscillation', 'legacy_name': 'KDJ', 'group': 'mean_reversion'}, 8: {'name': 'Long', 'legacy_name': 'LongOnly', 'group': 'directional_neutral'}, 9: {'name': 'Short', 'legacy_name': 'ShortOnly', 'group': 'directional_neutral'}, 10: {'name': 'Cash', 'legacy_name': 'Cash', 'group': 'directional_neutral'}}
+TEACHER_COLUMN_ALIASES = {i: (f"teacher_action_{spec['name']}", f"teacher_action_{spec['legacy_name']}") for i, spec in STRATEGY_ACTIONS.items()}
+NEWS_TEXT_COLS = ('stock_news_text', 'sector_news_text', 'market_news_text', 'macro_news_text')
+NEWS_LOOKBACK_DAYS = 3
+MAX_NEWS_ITEMS = 12
+MAX_NEWS_TOKENS = 64
+TEXT_VOCAB_SIZE = 32768
+POSITION_CONFIG = {'base_position': 0.8, 'min_position': 0.3, 'max_position': 0.95, 'volatility_thresholds': {'low': 0.15, 'medium': 0.25, 'high': 0.4}, 'position_adjustments': {'low_vol': 0.1, 'normal_vol': 0.0, 'medium_vol': -0.05, 'high_vol': -0.15}}
+ADAPTIVE_STRATEGY_CONFIG = {'ma_cross': {'high_vol_fast': 3, 'high_vol_slow': 12, 'low_vol_fast': 8, 'low_vol_slow': 25, 'normal_fast': 5, 'normal_slow': 18}, 'momentum': {'lookback': 8, 'entry_threshold_base': 0.15, 'min_entry': 0.02, 'max_entry': 0.06, 'exit_threshold_ratio': 0.4}, 'turtle': {'range_threshold': 0.08, 'high_range_entry': 12, 'high_range_exit': 8, 'low_range_entry': 20, 'low_range_exit': 10}, 'volume': {'volume_mult_min': 1.3, 'volume_mult_max': 2.5, 'volume_mult_base': 1.8}, 'atr': {'entry_mult_min': 1.2, 'entry_mult_max': 2.5, 'entry_mult_base': 1.5, 'exit_ratio': 0.5}, 'boll': {'std_min': 1.3, 'std_max': 2.2, 'std_base': 1.8}, 'rsi': {'oversold_high_vol': 30, 'overbought_high_vol': 70, 'oversold_normal': 35, 'overbought_normal': 65}, 'kdj': {'vol_adjustment': 8, 'j_buy_base': 15, 'k_buy_base': 25, 'j_sell_base': 85, 'k_sell_base': 75}}
+NUMERICAL_FEATURE_COLS = ['pct_chg', 'ret_1d', 'ret_5d', 'ret_20d', 'price_ma_20', 'ma_20_vs_60', 'bb_zscore', 'volume_zscore', 'atr_14', 'vol_20d', 'change', 'vol', 'amount', 'open', 'high', 'low', 'close', 'ma_5', 'ma_10', 'ma_20', 'ma_60']
